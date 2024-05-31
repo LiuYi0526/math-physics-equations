@@ -116,7 +116,7 @@
 
 
 \begin{exercise}
-  证明柯瓦列夫斯卡娅型方程 (1.9) 满足初始条件
+  证明柯瓦列夫斯卡娅型方程 (1.6) 满足初始条件
   \begin{equation}
     t=0: u=\varphi_0(x),\ldots, \frac{\partial^{m-1}u}{\partial t^{m-1}} = \varphi_{m-1}(x) \tag{$\star$}
   \end{equation}
@@ -184,18 +184,16 @@
 \begin{exercise}
   求一阶方程
   \begin{enumerate}[(1)]
-    \item $\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x} 
-      + b(x,t)u + c(x,t) = 0$,
-    \item $\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x}
-      + b(x,t,u) = 0$
+    \item $\displaystyle\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x} + b(x,t)u + c(x,t) = 0$;
+    \item $\displaystyle\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x} + b(x,t,u) = 0$
   \end{enumerate}
   的特征线和解沿特征线应成立的关系式.
 \end{exercise}
 
 \begin{solve}
   (1) 特征线满足的方程为 $\frac{\d x}{\d t} = a(x,t)$,
-  解得特征线为 $x = \int_0^t a(x,\tau) \d\tau$.
-  在特征线上, $u(x,t) = u\Bigl(\int_0^t a(x, \tau) \d\tau, t\Bigr)$, 故
+  解得特征线为 $\displaystyle x = \int_0^t a(x,\tau) \d\tau$.
+  在特征线上, $\displaystyle u(x,t) = u\Bigl(\int_0^t a(x, \tau) \d\tau, t\Bigr)$, 故
   \[\frac{\d u}{\d t} = \frac{\partial u}{\partial x} a(x,t)
     + \frac{\partial u}{\partial t}.\]
   故 $u$ 在特征线上满足关系式
@@ -208,8 +206,8 @@
 \begin{exercise}
   求下列一阶方程带初始条件 $u|_{t=0} = \varphi(x)$ 的柯西问题的解:
   \begin{enumerate}[(1)]
-    \item $\frac{\partial u}{\partial t} + \frac{\partial u}{\partial x} = 0$;
-    \item $\frac{\partial u}{\partial t} + \frac{\partial u}{\partial x} = u$.
+    \item $\displaystyle\frac{\partial u}{\partial t} + \frac{\partial u}{\partial x} = 0$;
+    \item $\displaystyle\frac{\partial u}{\partial t} + \frac{\partial u}{\partial x} = u$.
   \end{enumerate}
 \end{exercise}
 
@@ -414,6 +412,25 @@
 \end{proof}
 
 
+\begin{exercise}
+	证明：对于两个未知数的任何线性椭圆方程组, 都可能通过未知函数的实系数的可逆线性变换, 化为下面的形式：
+	$$\frac{\partial V_1}{\partial t}=a\frac{\partial V_1}{\partial x}-b\frac{\partial V_2}{\partial x}+f_1,$$
+	$$\frac{\partial V_2}{\partial t}=b\frac{\partial V_1}{\partial x}+a\frac{\partial V_2}{\partial x}+f_2,$$
+	其中$a,b$为$x,t$的函数, 且$b\neq0$,而$f_1,f_{2}$为未知函数的线性函数.
+\end{exercise}
+
+\begin{proof}
+	设两个未知函数的线性椭圆型方程组为
+	$$U_t+AU_x+BU+C=0,$$
+	其中, $U=( U_1, U_2)^T$, $A$, $B$为二阶矩阵.
+	
+	设方程组为椭圆型方程组, 对应特征根为两个共轭复根$a\pm b\upi$.进一步,  由于矩阵$\begin{pmatrix}a&-b\\b&a\end{pmatrix}$的特征根也为$a\pm b\upi$, 那么矩阵$A$与矩阵$\begin{pmatrix}a&-b\\b&a\end{pmatrix}$为相似矩阵, 则存在实函数可逆矩阵$P$, 使得$P^{-1}AP=\begin{pmatrix}a&-b\\b&a\end{pmatrix}$.
+	
+	于是, 作实函数的可逆线性变换$(U_1,U_2)^T=P(V_1,V_2)^T$, 可使得方程组
+	(0.43)化简为要求形式.
+\end{proof}
+
+
 \section{两个自变量的线性双曲型方程组的柯西问题}
 
 \begin{exercise}
@@ -541,3 +558,187 @@
 \begin{proof}
   Use (3.6) and Gronwall's inequality.
 \end{proof}
+
+
+\section{两个自变量的线性双曲型方程组的其他定解问题}
+
+
+\begin{exercise}
+	用逐次逼近法求方程组
+	$$\begin{cases}
+		\dfrac{\partial u}{\partial t}+\dfrac{\partial u}{\partial x}=v,\\
+		\dfrac{\partial v}{\partial t}-\dfrac{\partial v}{\partial x}=u
+	\end{cases}$$
+	满足条件
+	$$\begin{cases}
+		&u|_{x=t}=\sin t,\\
+		&v|_{x=-t}=\cos t
+	\end{cases}$$
+	的古尔萨问题的近似解, 并决定在特征线$x=t$上的函数$v$的数值及在特征
+	线$x=-t$上函数$u$的数值.
+\end{exercise}
+
+\begin{solve}
+	易知方程组的特征根为$\lambda_{1,2}=\pm$l,那么过$(x,t)$点的两条特征线方程分
+	别为
+	$$l_{1}:\quad x_{1}(\tau)=\tau+x-t,\\l_{2}:\quad x_{2}(\tau)=-\tau+x+t.$$
+	那么, $A$点坐标为$\left(\frac{x-t}2,-\frac{x-t}2\right),B$点坐标为$\left(\frac {x+t}2,\frac{x+t}2\right)$. Goursat 问题的积分方程组为
+	$$\begin{cases}
+		\displaystyle u(x,t)=u\left(x_{2}\left(\frac{x+t}{2};x,t\right),\frac{x+t}{2}\right)+\int_{\frac{x+t}{2}}^{t}v(x_{2}(\tau;x,t),\tau)d\tau,\\
+		\displaystyle v(x,t)=v\left(x_{1}\left(-\frac{x-t}{2};x,t\right),\frac{-(x-t)}{2}\right)+\int_{-\frac{x-t}{2}}^{t}u(x_{1}(\tau;x,t),\tau)d\tau.
+	\end{cases}$$
+	进一步, 构造积分方程组的逼近解序列为
+	$$\begin{cases}
+		u^{(n)}(x,t)=\sin\left(\frac{x+t}{2}\right)+\int_{\frac{v+t}{t}}^{t}v^{(n-1)}(-\tau+x+t,\tau)d\tau,\\
+		v^{(n)}(x,t)=\cos\left(\frac{x-t}{2}\right)+\int_{-\frac{x-t}{2}}^{t}u^{(n-1)}(\tau+x-t,\tau)d\tau,
+	\end{cases}$$
+	其中 $u^{(0)}(x;t)=\sin\left(\dfrac{x+t}2\right),v^{(0)}(x;t)=\cos\left(\dfrac{x-t}2\right)$.
+	
+	那么
+	$$\begin{cases}
+		u^{(1)}(x,t)=u^{(2)}(x,t)=\cdots=u^{(n)}(x,t)=\sin\dfrac{x+t}{2},\\
+		v^{(1)}(x,t)=v^{(2)}(x,t)=\cdots=v^{(n)}(x,t)=\cos\dfrac{x-t}{2}.
+	\end{cases}$$
+	于是, 近似解为
+	\[u(x,t)=\sin\frac{x+t}{2},\quad v(x,t)=\cos\frac{x-t}{2},\\v|_{x=t}=1,\quad u|_{x=-t}=0.\qedhere\]
+\end{solve}
+
+
+\begin{exercise}
+	证明:方程组(3.1)的任何广义柯西问题(即在某一处处不与特征方向相切的曲线$C:t=t(\sigma),x=x(\sigma)$上给定函数$u_i$的数值$u_i=\varphi_i(\sigma)$ $(i=$ $1,2,\cdots,N)$,要在曲线 $C$ 的某一侧求方程(3.1)满足此定解条件的解),都可通过适当的坐标变换化为普通的柯西问题来解决.
+\end{exercise}
+
+\begin{proof}
+	作坐标变换
+	$$\begin{cases}&s=t-t(\sigma),\\&y=x(\sigma).\end{cases}$$
+	令$\bar{V}_i(y,s)=V_i(y,s+t(\sigma)),(i=1,2,\ldots,N)$,方程组 (3.1) 转换为
+	$$\frac{\partial V_{i}}{\partial s}+\lambda_{i}(y,s+t(\sigma))\left(\frac{\partial V_{i}}{\partial y}+\frac{\partial V_{i}}{\partial s}\left(-\frac{t'(\sigma)}{x'(\sigma)}\right)\right)=\sum_{j=1}^{N}a_{ij}(y,s+t(\sigma))\bar{V_{j}}+\beta_{i}(y,s+t(\sigma)),$$
+	即
+	$$\left(1-\frac{t'(\sigma)}{x'(\sigma)}\lambda_{i}(y,s+t(\sigma))\right)\frac{\partial\bar{V}_{i}}{\partial s}+\lambda_{i}(y,s+t(\sigma))\frac{\partial\bar{V}_{i}}{\partial y}=\sum_{j=1}^{N}a_{ij}(y,s+t(\sigma))\bar{V}_{j}+\beta_{i}(y,s+t(\sigma)).$$
+	由于曲线$C$与特征线处处不相切, 则$1-\dfrac{t^{\prime}(\sigma)}{x^{\prime}(\sigma)}\lambda_{i}(y,s+t(\sigma))$处处不为零。那么得到在区域$s>0$上的Cauthy问题
+	$$\begin{cases}
+		\displaystyle\frac{\partial\bar{V_i}}{\partial s}+\frac{x'(\sigma)\lambda_i(y,s+t(\sigma))}{x'(\sigma)-t'(\sigma)\lambda_i(y,s+t(\sigma))}\frac{\partial\bar{V_i}}{\partial y}\\
+		=\displaystyle x^{\prime}(\sigma)\left(\sum_{j=1}^{N}\frac{a_{ij}(y,s+t(\sigma))}{x^{\prime}(\sigma)-t^{\prime}(\sigma)\lambda_{i}(y,s+t(\sigma))}\vec{V}_{j}+\frac{\beta_{i}(y,s+t(\sigma))}{x^{\prime}(\sigma)-t^{\prime}(\sigma)\lambda_{i}(y,s+t(\sigma))}\right),s>0\\
+		\bar{V}_{i}(y,t(\sigma))=\varphi_{i}(\sigma).
+	\end{cases}$$
+	其中$,i=1,2,\ldots,N.$于是广义柯西问题变换为普通柯西问题。
+\end{proof}
+
+\begin{exercise}
+	证明积分方程组(4.4)存在唯一的 $C^1$ 解, 并证明该解满足(4.2).
+\end{exercise}
+
+\begin{proof}
+	使用逐次逼近法证明积分方程组解的存在唯一性.
+	
+	作逼近解
+	$$\begin{pmatrix}u^{(0)}\\v^{(0)}\end{pmatrix}=\begin{pmatrix}\varphi(\xi_1(x,t))\\\psi(\xi_2(x,t))\end{pmatrix},$$
+	$$\begin{pmatrix}u^{(n+1)}(x,t)\\v^{(n+1)}(x,t)\end{pmatrix}=\begin{pmatrix}\varphi(\xi_1(x,t))\\\psi(\xi_2(x,t))\end{pmatrix}+\begin{pmatrix}\int_{h(\xi_1(x,t))}^t\left(a_1u^{(n)}+b_1v^{(n)}+c_1\right)(x_1(\tau;x,t),\tau)d\tau\\\int_{h(\xi_2(x,t))}^t\left(a_2u^{(n)}+b_2v^{(n)}+c_2\right)(x_2(\tau;x,t),\tau)d\tau\end{pmatrix}$$
+	其中, $n=0,1,2,\ldots,x=x_{i}(t;x^{0},t^{0})$表示经过点$(x^{0},t^{0})$的第$i$条特征线	$l_i,(i=1,2).$
+	
+	于是, 得到函数组序列 $\displaystyle\left\{\left(u^{(n)}(x,t), v^{(n)}(x,t)\right)^{T}\right\}_{n=1}^{\infty}$. 下面证明该序列在区域 $G$ 上为一致收敛.
+	
+	这相当于证明级数
+	\begin{equation}\label{eq:5.11}
+		\left(u^{(0)}(x,t),v^{(0)}(x,t)\right)^T+\sum_{n=0}^\infty\left[\left(u^{(n+1)}(x,t),v^{(n+1)}(x,t)\right)^T-\left(u^{(n)}(x,t),v^{(n)}(x,t)\right)^T\right]
+	\end{equation}
+	在$\bar{G}$上一致收敛.
+	
+	因为函数$u^{(0)}(x,t),v^{(0)}(x,t)$和$u^{(1)}(x,t),v^{(1)}(x,t)$在$\bar{G}$上连续, 故在$\bar{G}$中有界. 记
+	$$M=\max_{(x,t)\in\bar{G}}\left\{\left|u^{(0)}(x,t)\right|,\:\left|v^{(0)}(x,t)\right|,\:\left|u^{(1)}(x,t)\right|,\:\left|v^{(1)}(x,t)\right|\right\},$$
+	$$A=\max_{(x,t)\in\bar{G}}\left\{|a_{1}|,\:|a_{2}|,\:|b_{1}|,\:|b_{2}|\right\},\quad B=\min_{(x,t)\in\bar{G}}h(x),$$
+	在$\bar{G}$上有
+	$$\begin{aligned}
+		&\left|u^{(1)}(x,t)-u^{(0)}(x,t)\right|\leq2M,\quad\left|v^{(1)}(x,t)-v^{(0)}(x,t)\right|\leq2M,\\
+		&\left|u^{(2)}(x,t)-u^{(1)}(x,t)\right|\leq\int_{h(\xi_{1}(x,t))}^{t}|a_{1}|\left|u^{(1)}-u^{(0)}\right|+|b_{1}|\left|v^{(1)}-v^{(0)}\right|d\tau\leq4MA(t-B),\\
+		&\left|v^{(2)}(x,t)-v^{(1)}(x,t)\right|\leq\int_{h(\xi_{2}(x,t))}^{t}|a_{2}|\left|u^{(1)}-u^{(0)}\right|+|b_{2}|\left|v^{(1)}-v^{(0)}\right|d\tau\leq4MA(t-B),\\
+		&\cdots.
+	\end{aligned}$$
+	现在假定
+	$$\left|u^{(n)}(x,t)-u^{(n-1)}(x,t)\right|\leq\frac{2M(2A(t-B))^{n-1}}{(n-1)!},$$
+	及
+	$$\left|v^{(n)}(x,t)-v^{(n-1)}(x,t)\right|\leq\frac{2M(2A(t-B))^{n-1}}{(n-1)!},$$
+	成立, 则
+	$$\begin{aligned}
+		\left|u^{(n+1)}(x,t)-u^{(n)}(x,t)\right|&\leq\int_{h(\xi_{1}(x,t))}^{t}|a_{1}|\left|u^{(n)}-u^{(n-1)}\right|+|b_{1}|\left|v^{(n)}-v^{(n-1)}\right|d\tau\\
+		&\leq\frac{1}{n!}2M(2A(t-B))^{n},
+	\end{aligned}$$
+	$$\begin{aligned}
+		\left|v^{(n+1)}(x,t)-v^{(n)}(x,t)\right|&\leq\int_{h(\xi_{2}(x,t))}^{t}|a_{2}|\left|u^{(n)}-u^{(n-1)}\right|+|b_{2}|\left|v^{(n)}-v^{(n-1)}\right|d\tau\\
+		&\leq\frac{1}{n!}2M(2A(t-B))^{n}.
+	\end{aligned}$$
+	由数学归纳法知, 对于任意$n$都有
+	$$\begin{aligned}
+		\left|u^{(n+1)}(x,t)-u^{(n)}(x,t)\right|\leq\frac{2M(2A(t-B))^{n}}{n!},\\
+		\left|v^{(n+1)}(x,t)-v^{(n)}(x,t)\right|\leq\frac{2M(2A(t-B))^{n}}{n!}.
+	\end{aligned}$$
+
+	取定$\bar{G}$中最大的$t$值为$T_0$,则
+	$$\left|u^{(n+1)}(x,t)-u^{(n)}(x,t)\right|\leq\frac{2M(2A(T_0-B))^n}{n!},$$
+	$$\left|v^{(n+1)}(x,t)-v^{(n)}(x,t)\right|\leq\frac{2M(2A(T_0-B))^n}{n!}.$$
+	
+	由于数项级数$\dfrac{(2A(T_0-B))^n}{n!}$收敛, 则级数\eqref{eq:5.11}在$\bar{G}$中一致收敛, 那么积分方程组的解存在且连续.
+	
+	下面证明在$\bar{G}$中连续解$(u,v)^T$的唯一性.
+	
+	假定积分方程组有两个解$(u,v)^T$与$(\bar{u},\bar{v})^T$,代入方程组作差得
+	$$\begin{cases}
+		\displaystyle u(x,t)-\bar{u}(x,t)=\int_{h(\xi_1(x,t))}^ta_1(u-\bar{u})+b_1(v-\bar{v})d\tau,\\
+		\displaystyle v(x,t)-\bar{v}(x,t)=\int_{h(\xi_2(x,t))}^ta_2(u-\bar{u})+b_2(v-\bar{v})d\tau.
+	\end{cases}$$
+	假定
+	$$\max_{(x,t)\in\bar{G}}\{|u(x,t)-\bar{u}(x,t)|,\:|v(x,t)-\bar{v}(x,t)|\}=M_{1}>0,$$
+	重复使用存在性使用的方法知, 对于任何$n$成立
+	$$M_1\leq M_1\frac{(2A(T_0-B))^n}{n!}$$
+	当$n$充分大时, 导致矛盾. 所以必须有$M_1=0.$
+	
+	因而, 在$\bar{G}$中
+	$$u(x,t)\equiv\bar{u}(x,t),\quad v(x,t)\equiv\bar{v}(x,t).$$
+	
+	下面证明$(u,v)^T\in C^1(\bar{G}).$
+	
+	对逼近解两端对$x$求导, 得到
+	$$\begin{aligned}
+		&\frac{\partial u^{(n+1)}(x,t)}{\partial x}\\
+		&=\varphi'(\xi_{1}(x,t))\frac{\partial\xi_{1}}{\partial x}+\int_{h(\xi_{1}(x,t))}^{t}\left(\frac{\partial a_{1}}{\partial x_{1}}u^{(n)}+\frac{\partial b_{1}}{\partial x_{1}}v^{(n)}+\frac{\partial c_{1}}{\partial x_{1}}\right)\frac{\partial x_{1}(\tau;x,t)}{\partial x}d\tau\\
+		&+\int_{h(\xi_{1}(x,t))}^{t}\left(a_{1}\frac{\partial u^{(n)}}{\partial x_{1}}+b_{1}\frac{\partial v^{(n)}}{\partial x_{1}}\right)\frac{\partial x_{1}(\tau;x,t)}{\partial x}d\tau\\
+		&+\left(a_1u^{(n)}+b_1v^{(n)}+c_1\right)(x_1(h(\xi_1(x,t));x,t),h(\xi_1(x,t)))-h^{\prime}(\xi_1(x,t))\frac{\partial\xi_1}{\partial x}.
+	\end{aligned}$$
+
+	由数学归纳法知$\left\{\dfrac{\partial u^{(n)}}{\partial x}\right\} (n=0, 1, 2, \ldots)$在$\bar{G}$上连续. 根据证明$\left\{u^{(n)}\right\}$一致收敛的方法可得$\left\{\dfrac{\partial u^{(n)}}{\partial x}\right\}$在$\bar G$上一致收敛, 其极限函数为$\dfrac{\partial u}{\partial x}$在$\bar{G}$中连续.
+	
+	同理可证$\dfrac{\partial u}{\partial t}$, $\dfrac{\partial v}{\partial x}$, $\dfrac{\partial v}{\partial t}$在$\bar{G}$中连续.
+	
+	综上积分方程组存在唯一的$C^1$解.
+	
+	在$\widehat{AB}$上, 即$t= h(x), (x,t)\in\widehat{AB}$, $\xi_1(x,t)=\xi_2(x,t)=x$,由逼近解序列
+	$$\begin{cases}
+		u^{(n)}(x,t)=\varphi(\xi_1(x,t))=\varphi(x),\\
+		v^{(n)}(x,t)=\psi(\xi_1(x,t))=\psi(x),
+	\end{cases}$$
+	则有$u(x,t)=\varphi (x)$, $v(x,t)=\psi (x)$. 因此, $(u,v)^T$满足问题 (4.2).
+\end{proof}
+
+
+\begin{exercise}
+	写出与古尔萨问题等价的积分方程组.
+\end{exercise}
+
+\begin{solve}
+	Goursat 问题设$\widehat{PA},\widehat{PB}$分别是$P$点的第一和第二簇特征线, 给定
+	$$V|_{\widehat{PA}}=\varphi(x),\quad u|_{\widehat{PB}}=\psi(x),$$
+	求$\widehat{PA},\widehat{PB}$所夹的角状区域$G$中方程组的解.
+	
+	设$\widehat{PA},\widehat{PB}$的方程分别为$t=h_1(x), t=h_2(x)$,过区域$G$上的任何一点$(x,t)$都能作全落在$G$上的两条特征线$l_1,l_2$,分别与曲线$\widehat{PA}$和$\widehat{PB}$相交,  交点的横坐标分别由关系
+	$$\xi=x_1(h_2(\xi);x,t)$$
+	和
+	$$\xi=x_2(h_1(\xi);x,t)$$
+	确定.
+	
+	记交点横坐标分别为$\xi_1(x,t)$与$\xi_2(x,t)$,则 Goursat 问题等价于积分方
+	程组
+	$$\begin{cases}
+		\displaystyle u(x,t)=\varphi(\xi_1(x,t))+\int_{h_2(\xi_1(x,t))}^t(a_1+b_1v+c_1)(x_1(\tau;x,t),\tau)d\tau,\\
+		\displaystyle v(x,t)=\psi(\xi_2(x,t))+\int_{h_1(\xi_2(x,t))}^t(a_2u+b_2v+c_2)(x_2(\tau;x,t),\tau)d\tau.
+	\end{cases}$$
+\end{solve}

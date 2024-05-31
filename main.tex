@@ -31,11 +31,11 @@
 \setlist[enumerate,1]{left=\parindent}
 
 \theoremstyle{remark}
-\newtheorem*{remark}{注}
+\newtheorem*{remark}{\heiti 注}
 \newtheoremstyle{PDE}{3pt}{3pt}{\rmfamily}{\parindent}{\bfseries}{}{.5em}{}
 \theoremstyle{PDE}
 \newtheorem{note}{Note}[section]
-\newtheorem{property}{性质}
+\newtheorem{property}{\heiti 性质}
 
 \makeatletter
 \renewenvironment{proof}{\par
@@ -43,7 +43,7 @@
 	\normalfont \topsep1\p@\@plus6\p@\relax
 	\trivlist
 	\item\relax
-	{\hspace*{\parindent}{\itshape\bfseries Proof}\@addpunct{.}}\hspace\labelsep\ignorespaces
+	{\hspace*{\parindent}{\itshape\bfseries\heiti 证\quad}}\hspace\labelsep\ignorespaces
 }{%
 	\popQED\endtrivlist\@endpefalse
 }
@@ -52,7 +52,7 @@
 	\normalfont \topsep1\p@\@plus6\p@\relax
 	\trivlist
 	\item\relax
-	{\hspace*{\parindent}{\itshape\bfseries Solution}\@addpunct{.}}\hspace\labelsep\ignorespaces
+	{\hspace*{\parindent}{\itshape\bfseries\heiti 解\quad}}\hspace\labelsep\ignorespaces
 }{%
 	\popQED\endtrivlist\@endpefalse
 }
@@ -63,7 +63,7 @@
 	\normalfont \topsep1\p@\@plus6\p@\relax
 	\trivlist
 	\item\relax
-	{\hspace*{\parindent}{\itshape\bfseries Solution}\@addpunct{.}}\hspace\labelsep\ignorespaces
+	{\hspace*{\parindent}{\itshape\bfseries\heiti 解\quad}}\hspace\labelsep\ignorespaces
 }{%
 	\popQED\endtrivlist\@endpefalse
 }

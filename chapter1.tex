@@ -1,6 +1,6 @@
 \chapter{波动方程}
 
-\section{方程的导出，定解条件}
+\section{方程的导出, 定解条件}
 
 
 \begin{exercise}
@@ -16,13 +16,13 @@
 
 \begin{proof}
   记杆的横截面积为 $S$,取杆的左端截面的形心为原点, 杆轴为 $x$ 轴,
-  任取静止时坐标为 $(x,x+\Delta x)$的一小段细杆$B$.
-  在 $t$ 时刻, $B$的两段位移分别为$u(x,t)$和$u(x+\Delta x,t)$,
+  任取静止时坐标为 $(x,x+\Delta x)$ 的一小段细 杆$B$.
+  在 $t$ 时刻, $B$ 的两段位移分别为 $u(x,t)$ 和 $u(x+\Delta x,t)$,
   $B$ 的伸长为 $\Delta L=u(x+\Delta x,t)-u(x,t)$, 故 $B$ 的应变为
-  \[\frac{u(x+\Delta x,t)-u(x,t)}{\Delta x}\]
-  令 $\Delta x\to 0$ 即得 $x$ 点在时刻 $t$ 的应变为 $\frac{\partial u}{\partial x}(x,t)$,
-  因此 $B$ 两端的张力分别为 $ES\frac{\partial u}{\partial x}(x,t)$
-  和 $ES\frac{\partial u}{\partial x}(x+\Delta x,t)$, 故 $B$ 的运动方程为
+  \[\frac{u(x+\Delta x,t)-u(x,t)}{\Delta x}.\]
+  令 $\Delta x\to 0$ 即得 $x$ 点在时刻 $t$ 的应变为 $\displaystyle\frac{\partial u}{\partial x}(x,t)$,
+  因此 $B$ 两端的张力分别为 $\displaystyle ES\frac{\partial u}{\partial x}(x,t)$
+  和 $\displaystyle ES\frac{\partial u}{\partial x}(x+\Delta x,t)$, 故 $B$ 的运动方程为
   \[ES\frac{\partial u}{\partial x}(x+\Delta x,t)-ES\frac{\partial u}{\partial x}(x,t)
     = S\rho(x)\Delta x\frac{\partial^2u}{\partial t^2}(\bar{x},t).\]
   消去 $S$ 并令 $\Delta x\to 0$ 即得所证.
@@ -34,28 +34,57 @@
   试分别导出这三种情况下所对应的边界条件.
 \end{exercise}
 
-\begin{proof}
-	内容...
-\end{proof}
+\begin{solve}
+	(1)杆的两端被固定在$x=0, x=l$两点则相应的边界条件为
+	$$u(0,t)=0,\quad u(l,t)=0.$$
+	
+	(2)若$x=l$为自由端, 则杆在$x=l$的张力为
+	$$T(l,t)=\left.\left(E(x)\frac{\partial u}{\partial x}\right)\right|_{x=l}=0.$$
+	同理, 若$x=0$为自由端, 则相应的边界条件为
+	$$\left.\frac{\partial u}{\partial x}\right|_{x=0}=0.$$
+	
+	(3)若$x=l$端点固定在弹性支承上, 而弹性支承固定于某点, 且该点离开原来位置的偏移由函数$v(t)$给出, 则在$x=l$端支承的伸长为$u(l,t)-v(t)$. 由Hooke定律有
+	$$\left.\left(E(x)\frac{\partial u}{\partial x}\right)\right|_{x=l}=-k[u(l,t)-v(t)],$$
+	其中$k$为支承的刚度系数, 由此得边界条件
+	$$\left.\left(\frac{\partial u}{\partial x}+\sigma u\right)\right|_{x=l}=f(t),\quad\sigma=\frac{k}{E},\quad f(t)=\frac{kv(t)}{E(l)}.$$
+	特别的, 若支承固定于一定点上, 则$v(t)=0$, 得边界条件为
+	$$\left.\left(\frac{\partial u}{\partial x}+\sigma u\right)\right|_{x=0}=0.$$
+	同理, 若$x=0$端固定在弹性支承上, 则得边界条件
+	$$\left.\left(E(x)\frac{\partial u}{\partial x}\right)\right|_{x=0}=-k[u(0,t)-v(t)],$$
+	即
+	\[\left.\left(\frac{\partial u}{\partial x}+\sigma u\right)\right|_{x=0}=f(t).\qedhere\]
+\end{solve}
 
 
 \begin{exercise}
   试证:圆锥形枢轴的纵振动方程为
-  \[E\frac{\partial}{\partial x}\left[\left(1-\frac{x}{h}\right)^2\frac{\partial u}{\partial x}\right]=\rho\left(1-\frac{x}{h}\right)^2\frac{\partial^2u}{\partial t^2}\]
+  \[E\frac{\partial}{\partial x}\left[\left(1-\frac{x}{h}\right)^2\frac{\partial u}{\partial x}\right]=\rho\left(1-\frac{x}{h}\right)^2\frac{\partial^2u}{\partial t^2},\]
   其中$h$为圆锥的高.
 \end{exercise}
 
 \begin{proof}
-	内容...
+	不妨设枢纽底面的半径为$1$, 则$x$点处截面的半径$\displaystyle r=1-\frac xh$.所以截面积$\displaystyle S(x)=\pi r^2=\pi\left(1-\frac{x}{h}\right)^2$.利用第1题, 得
+	$$\rho(x)\pi\left(1-\frac{x}{h}\right)^2\frac{\partial^2u}{\partial t^2}=\frac{\partial}{\partial x}\left[E\pi\left(1-\frac{x}{h}\right)^2\frac{\partial u}{\partial x}\right].$$
+	若$E(x)=E$为常量, 则得
+	\[E\dfrac{\partial}{\partial x}\left[\left(1-\dfrac{x}{h}\right)^2\dfrac{\partial u}{\partial x}\right]=\rho\left(1-\dfrac{x}{h}\right)^2\dfrac{\partial^2u}{\partial t^2}.\qedhere\]
 \end{proof}
 
 
-\begin{exercise}
+\begin{exercise}[6]
   绝对柔软而均匀的弦线有一端固定,在它本身重力的作用下,此线处于铅锤的平衡位置,试导出此线的微小横振动方程.
 \end{exercise}
 
 \begin{solve}
-	内容...
+	设弦线长为$l$,线密度为$\rho$,则$x$点处的张力为
+	$$T(x)=\rho g(l-x),$$
+	且$T(x)$的方向总是沿着弦在$x$点处的切线方向.仍以$u(x,t)$表示弦上各点在时刻$t$沿垂直于$x$轴方向的位移,取弦段$(x,x+\Delta x)$,则弦段两端张力在$u$轴方向的投影分别为
+	\[\rho g(l-x)\sin\theta(x),\quad\rho g(l-(x+\Delta x))\sin\theta(x+\Delta x),\]
+	其中$\theta(x)$表示$T(x)$方向与$x$轴的夹角,又
+	\[\sin\theta\approx\tan\theta=\frac{\partial u}{\partial x}.\]
+	于是,得运动方程
+	\[\rho\Delta x\dfrac{\partial^2u}{\partial t^2}=\left.(l-(x+\Delta x))\dfrac{\partial u}{\partial x}\right|_{x+\Delta x}\rho g-(l-x)\left.\dfrac{\partial u}{\partial x}\right|_x\rho g.\]
+	利用微分中值定理,令$\Delta x\to0$得
+	\[\dfrac{\partial^2u}{\partial t^2}=g\dfrac{\partial}{\partial x}\left[(l-x)\dfrac{\partial u}{\partial x}\right].\qedhere\]
 \end{solve}
 
 
@@ -71,14 +100,13 @@
     - b\frac{\partial u(x,t)}{\partial t}\right)\diff x\diff t = 0.\]
   因此定解问题为(不妨设弹性支承在右端):
   \[\begin{cases}
-    \frac{\partial^2u}{\partial t^2}
+    \displaystyle\frac{\partial^2u}{\partial t^2}
     - a^2\frac{\partial^2u}{\partial x^2}
     + \frac{b}{\rho}\frac{\partial u}{\partial t}
     = 0, \\
-    u(x,0)
-    = \varphi(x),\frac{\partial u(x,0)}{\partial t}
-    = \psi(x)\\u|_{x=0}=0,\left(\frac{\partial u}{\partial x}
-    + \sigma u\right)|_{x=l}=0.
+    \displaystyle u(x,0) = \varphi(x),\frac{\partial u(x,0)}{\partial t} = \psi(x),\\
+    \displaystyle u|_{x=0}=0,\left(\frac{\partial u}{\partial x}
+    + \sigma u\right)\bigg|_{x=l}=0.
   \end{cases}\qedhere\]
 \end{solve}
 
@@ -104,12 +132,12 @@
 
 \begin{proof}
   直接计算
-  \[\frac{\partial u}{\partial t}=-t(t^2-x^2-y^2)^{-3/2},\quad
-    \frac{\partial^2u}{\partial t^2}=(t^2-x^2-y^2)^{-5/2}(2t^2+x^2+y^2),\]
-  \[\frac{\partial u}{\partial x}=x(t^2-x^2-y^2)^{-3/2},\quad
-    \frac{\partial^2u}{\partial x^2}=(t^2-x^2-y^2)^{-5/2}(t^2-2x^2+y^2).\]
+  \[\frac{\partial u}{\partial t}=-t(t^2-x^2-y^2)^{-\frac32},\quad
+    \frac{\partial^2u}{\partial t^2}=(t^2-x^2-y^2)^{-\frac52}(2t^2+x^2+y^2),\]
+  \[\frac{\partial u}{\partial x}=x(t^2-x^2-y^2)^{-\frac32},\quad
+    \frac{\partial^2u}{\partial x^2}=(t^2-x^2-y^2)^{-\frac52}(t^2-2x^2+y^2).\]
   同理
-  \[\frac{\partial u^2}{\partial y^2}=(t^2-x^2-y^2)^{-5/2}(t^2+2y^2-x^2).\]
+  \[\frac{\partial u^2}{\partial y^2}=(t^2-x^2-y^2)^{-\frac52}(t^2+2y^2-x^2).\]
   结合以上三式可得
   \[\frac{\partial^2u}{\partial t^2}
     = \frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}.\qedhere\]
@@ -119,10 +147,10 @@
 \section{达朗贝尔公式、波的传播}
 
 \begin{exercise}
-  设 $h>0$ 为常数, 证明方程
+  证明方程
   \[\frac{\partial}{\partial x}\biggl[\biggl(1-\frac{x}{h}\biggr)^2
     \frac{\partial u}{\partial x}\biggr]
-    = \frac{1}{a^2}\biggl(1-\frac{x}{h}\biggr)^2 \frac{\partial^2u}{\partial t^2}\]
+    = \frac{1}{a^2}\biggl(1-\frac{x}{h}\biggr)^2 \frac{\partial^2u}{\partial t^2}\quad(h>0,\text{常数})\]
   的通解可以写成
   \[u = \frac{F(x-at)+G(x+at)}{h-x},\]
   其中 $F$, $G$ 为任意的具有二阶连续导数的单变量函数, 并由此求它满足初始条件
@@ -165,9 +193,9 @@
 \begin{exercise}[3]
   利用传播波法, 求解波动方程的古尔萨 (Goursat) 问题
   \[\begin{cases}
-    \frac{\partial^2u}{\partial t^2} = a^2 \frac{\partial^2u}{\partial x^2}, \\
-    u|_{x-at=0} = \varphi(x), \\
-    u|_{x+at=0} = \psi(x),\; \varphi(0) = \psi(0).
+    \displaystyle\frac{\partial^2u}{\partial t^2} = a^2 \frac{\partial^2u}{\partial x^2}\quad(-at<x<at,t>0),\\
+    u|_{x-at=0} = \varphi(x)\quad(t>0),\\
+    u|_{x+at=0} = \psi(x)\quad(t>0),\; \varphi(0) = \psi(0).
   \end{cases}\]
 \end{exercise}
 
@@ -175,7 +203,7 @@
   设 $u(x,t)$ 具有行波解 $u(x,t) = F(x-at)+G(x+at)$, 由边界条件得
   \[F(0)+G(2x) = \varphi(x),\]
   \[F(2x)+G(0) = \psi(x).\]
-  由上式得 $F(x) = \psi(x/2)-G(0)$, $G(x) = \varphi(x/2)-F(0)$.
+  由上式得 $\displaystyle F(x) = \psi\left(\frac x2\right)-G(0)$, $\displaystyle G(x) = \varphi\left(\frac x2\right)-F(0)$.
   取 $(x,t) = (0,0)$, 得
   \[u(0,0) = F(0) + G(0) = \varphi(0) = \psi(0).\]
   从而
@@ -184,14 +212,37 @@
 \end{solve}
 
 
+\begin{exercise}
+	对非齐次波动方程的初值问题(2.5),(2,6), 证明: 当$f(x,t)$不变时,
+	
+	(1) 如果初始条件在$x$轴的区间$[x_1,x_2]$上发生变化, 那末对应的解在区间$[x_1,x_2]$的影响区域以外不发生变化;
+	
+	(2) 在$x$轴区间$[x_1,x_2]$上所给的初始条件唯一地确定区间$[x_1,x_2]$的决定区域中解的数值.
+\end{exercise}
+
+\begin{proof}
+	(1) 非齐次方程初值问题的解为
+	$$u(x,t)=\frac{\varphi(x-at)+\varphi(x+at)}{2}+\frac{1}{2a}\int_{x-at}^{x+at}\psi(\alpha)d\alpha+\dfrac{1}{2a}\int_{0}^{t}\int_{x-a(t-\tau)}^{x+a(t-\tau)}f(\xi,\tau)d\xi d\tau.$$
+	当初始条件发生变化时, 仅仅引起以上表达式的前两项发生变化, 即仅仅影响到相应齐次方程初值的解.
+	
+	当$\varphi(x),\psi(x)$在$[x_1,x_2]$上发生变化, 若对任何$t>0$, 有$x+at<x_1$或$x-at>x_2$, 则区间$[x-at,x+at]$整个落在区间$[x_1,x_2]$之外, 由解的表达式知$u(x,t)$不发生变化, 即对$t>0$, 当$x<x_1-at$或$x>x_2+at$, 也就是$(x,t)$落在区间$[x_1,x_2]$的影响域
+	$$x_1-at\leq x\leq x_2+at\quad(t>0)$$
+	之外,解$u(x,t)$不发生变化.
+	
+	(2) 区间$[x_1,x_2]$的决定区域为$t>0,x_1+at\leq x\leq x_2-at$.在其中任给$(x,t)$,则
+	$$x_1\leq x-at<x+at\leq x_2.$$
+	故区间$[x-at,x+at]$完全落在区间$[x_1,x_2]$中.因此$[x_1,x_2]$上所给的初始条件$\varphi(x),\psi(x)$代入达朗贝尔公式唯一地确定出$u(x,t)$的数值.
+\end{proof}
+
+
 \begin{exercise}[5]
-  Solve
+  求解
   \[\begin{cases}
-    u_{tt} - a^2 u_{xx} = 0,\quad x>0, t>0, \\
+    u_{tt} - a^2 u_{xx} = 0,\quad (x>0, t>0), \\
     u|_{t=0} = \varphi(x),\quad u_t|_{t=0} = 0, \\
     u_x - ku_t|_{x=0} = 0,
   \end{cases}\]
-  in which $k$ is a constant.
+  其中 $k$ 为正常数.
 \end{exercise}
 
 \begin{solution}
@@ -244,10 +295,10 @@
 \begin{exercise}[6]
   求解初边值问题
   \[\begin{cases}
-    u_{tt} - u_{xx} = 0,\quad 0<t<kx, k>1, \\
-    u|_{t=0} = \varphi_0(x),\quad x\geq 0, \\
-    u_t|_{t=0} = \varphi_1(x),\quad x\geq 0, \\
-    u|_{t=kx} = \psi(x),
+    u_{tt} - u_{xx} = 0,\quad (0<t<kx, k>1), \\
+    u|_{t=0} = \varphi_0(x),\quad (x\geq 0), \\
+    u_t|_{t=0} = \varphi_1(x),\quad (x\geq 0), \\
+    u|_{t=kx} = \psi(x),\quad (x\geq 0),
   \end{cases}\]
   其中 $\varphi_0(0) = \psi(0)$.
 \end{exercise}
@@ -388,18 +439,30 @@
   \begin{enumerate}[(1)]
     \item $\begin{cases}
       \frac{\partial^2u}{\partial t^2} = a^2 \frac{\partial^2u}{\partial x^2}, \\
-      u(x,0) = \sin\frac{3\pi x}{l},\quad u_t(x,0) = x(l-x)\quad (0<x<l), \\
+      \displaystyle u|_{t=0} = \sin\frac{3\pi x}{l},\quad \frac{\partial u}{\partial t}|_{t=0} = x(l-x)\quad (0<x<l), \\
       u(0,t) = u(l,t) = 0.
     \end{cases}$
     \item $\begin{cases}
       \frac{\partial^2u}{\partial t^2} - a^2 \frac{\partial^2u}{\partial x^2} = 0, \\
-      u(x,0) = \frac{h}{l}x, \quad u_t(x,0) = 0, \\
-      u(0,t) = 0,\quad u_x(l,t) = 0.  
+      u(0,t) = 0, \frac{\partial u}{\partial x}(l,t)=0,\\
+      u(x,0) = \frac{h}{l}x,\\
+      \frac{\partial u}{\partial t}(x,0) = 0.  
     \end{cases}$
   \end{enumerate}
 \end{exercise}
 
 \begin{solve}
+	(1)观察到$\displaystyle\sin\frac{3\pi x}l$ 本身具有傅里叶级数的形式,由傅里叶级数的唯一性,得
+	$$A_k=\begin{cases}0,&k\neq3,\\1,&k=3.\end{cases}$$
+	
+	由$x(l-x)$在$[0,l]$上的傅里叶正弦级数的形式,可得
+	$$B_k=\frac2{k\pi a}\int_0^l\xi(l-\xi)\sin\frac{k\pi \xi}l\mathrm{d}\xi=\frac{4l^3}{k^4\pi^4a}(1-(-1)^k).$$
+	
+	于是得到
+	$$\begin{aligned}
+		u(x,t)&=\cos\frac{3\pi a}lt\sin\frac{3\pi }lx+\frac{4l^3}{\pi^4a}\sum_{k=1}^\infty\frac{1-(-1)^k}{k^4}\sin\frac{k\pi a}lt\sin\frac{k\pi}lx\\
+		&=\cos\frac{3\pi a}lt\sin\frac{3\pi }lx+\frac{8l^3}{\pi^4a}\sum_{k=1}^\infty\frac{1}{(2k-1)^4}\sin\frac{(2k-1)\pi a}lt\sin\frac{(2k-1)\pi}lx.
+	\end{aligned}$$
   (2) 边界条件是线性的, 故设 $u(x,t)=X(x)T(t)$,由边界条件知 $X(x)$ 满足定解问题
   \[\begin{cases}
     X''(x)+\lambda X(x) = 0, \\
@@ -407,7 +470,7 @@
   \end{cases}\]
   根据 $\lambda$ 的符号分类讨论得
   \[X_k(x)=C_k\sin \frac{(2k+1)\pi}{2l}x,\quad k=0,1,2,\ldots\]
-  其中相应的特征值 $\lambda_k=\left(\frac{2k+1}{2l}\pi\right)^2$.
+  其中相应的特征值 $\displaystyle\lambda_k=\left(\frac{2k+1}{2l}\pi\right)^2$.
   由 $T''(t)+\lambda_k a^2T(t)=0$ 解得
   \[T_k(t) = A_k\cos\frac{(2k+1)a\pi}{2l}t+B_k\sin \frac{(2k+1)a\pi}{2l}t.\]
   于是
@@ -416,12 +479,12 @@
   再根据初始条件得
   \[\sum_{k=0}^{\infty}A_k\sin \frac{(2k+1)\pi}{2l}x=\frac{h}{l}x,\]
   \[\sum_{k=0}^{\infty}B_k\frac{(2k+1)\pi a}{2l}\sin \frac{(2k+1)\pi}{2l}x = 0.\]
-  利用三角函数序列 $\Bigl(\sin \frac{(2k+1)\pi}{2l}x\Bigr)_{k\geq 0}$
+  利用三角函数序列 $\displaystyle\Bigl(\sin \frac{(2k+1)\pi}{2l}x\Bigr)_{k\geq 0}$
   在区间$[0,l]$上的正交性, 即
   \[\int_0^l\sin \frac{(2m+1)\pi}{2l}x\cdot\sin \frac{(2n+1)\pi}{2l}x\diff x
     = \frac{l}{2}\delta_{mn},\]
   得
-  \[A_k=\frac{2}{l}\int_0^l\frac{h}{l}x\sin \frac{(2k+1)\pi}{2l}x\diff x
+  \[A_k=\frac{2}{l}\int_0^l\frac{h}{l}\xi\sin \frac{(2k+1)\pi}{2l}\xi\diff \xi
     =(-1)^k\frac{8h}{(2k+1)^2\pi^2},\quad B_k = 0.\]
   因此
   \[ u(x,t) = \sum_{k=0}^{\infty}(-1)^k\frac{8h}{(2k+1)^2\pi^2}\cos\frac{(2k+1)\pi at}{2l}
@@ -429,16 +492,16 @@
 \end{solve}
 
 \begin{remark}
-  $\int_{-l}^l\sin\alpha x\sin\beta x\diff x=0$ 及 $\int_0^l\sin\alpha x\sin\beta x\diff x=0$
+  $\displaystyle\int_{-l}^l\sin\alpha x\sin\beta x\diff x=0$ 及 $\displaystyle\int_0^l\sin\alpha x\sin\beta x\diff x=0$
   的充要条件为 $(\alpha\pm\beta)l=k\pi\neq 0$. 而且正弦函数于余弦函数总是正交的, 
-  即 $\int_{-l}^l\sin\alpha x\cos\beta x\equiv 0$。
+  即 $\displaystyle\int_{-l}^l\sin\alpha x\cos\beta x\equiv 0$。
 \end{remark}
 
 
 \begin{exercise}
   设弹簧一端固定, 一端在外力作用下做周期振动, 此时定解问题归结为
   \[\begin{cases}
-    \frac{\partial^2u}{\partial t^2} = a^2 \frac{\partial^2u}{\partial x^2}, \\
+    \displaystyle\frac{\partial^2u}{\partial t^2} = a^2 \frac{\partial^2u}{\partial x^2}, \\
     u(0,t) = 0, \quad u(l,t) = A\sin^2\omega t, \\
     u(x,0) = u_t(x,0) = 0.
   \end{cases}\]
@@ -446,13 +509,13 @@
 \end{exercise}
 
 \begin{solve}
-  边界条件非齐次,故令$U(x,t)=\frac{x}{l}A\sin^2\omega t$,
+  边界条件非齐次,故令$\displaystyle U(x,t)=\frac{x}{l}A\sin^2\omega t$,
   $V(x,t)=u(x,t)-U(x,t)$, 则 $V(x,t)$ 满足的定解问题是
   \[\begin{cases}
-    \frac{\partial^2V}{\partial t^2}-a^2\frac{\partial^2V}{\partial x^2}
+    \displaystyle\frac{\partial^2V}{\partial t^2}-a^2\frac{\partial^2V}{\partial x^2}
       = -\frac{2\omega^2A}{l}x\cos 2\omega t, \\
     V(0,t)=0,\quad V(l,t)=0, \\
-    V(x,0)=0,\quad \frac{\partial V(x,0)}{\partial t} = 0.
+    \displaystyle V(x,0)=0,\quad \frac{\partial V(x,0)}{\partial t} = 0.
   \end{cases}\]
   运用齐次化原理知该问题的解为
   \[u(x,t)=\sum_{k=1}^{\infty}\int_0^tB_k(\tau)\sin\frac{k\pi a}{l}(t-\tau)\diff\tau
@@ -468,6 +531,39 @@
 \end{solve}
 
 
+
+\begin{exercise}
+	求弦振动方程
+	$$u_{tt}-a^2u_{xx}=0\quad(0<x<l,t>0)$$
+	满足以下定解条件的解：
+	$$\begin{aligned}
+		(1)&u|_{x=0}=u_{x}|_{x=l}=0,\\
+		&u|_{t=0}=\sin\frac{3}{2l}\pi x,u_{t}|_{t=0}=\sin\frac{5}{2l}\pi x;\\
+		(2)&u_{x}|_{x=0}=u_{x}|_{x=l}=0,\\
+		&u|_{t=0}=x,u_{t}|_{t=0}=0.
+	\end{aligned}$$
+\end{exercise}
+
+\begin{solve}
+	(1)$$u(x,t)=\sum_{k=0}^{\infty}\left(A_{k}\cos\frac{2k+1}{2l}a\pi t+B_{k}\sin\frac{2k+1}{2l}a\pi t\right)\sin\frac{2k+1}{2l}\pi x.$$
+	代入初值条件可得
+	$$ A_{k} =\begin{cases}1,&k=1,\\0,&k\neq1,\end{cases}\quad B_k=\begin{cases}\frac{2l}{5\pi a},&k=2,\\0,&k\neq2.\end{cases}$$
+	则
+	$$u(x,t)=\cos\frac{3a\pi}{2l}t\sin\frac{3\pi}{2l}x+\frac{2l}{5a\pi}\sin\frac{5a\pi}{2l}t\sin\frac{5\pi}{2l}x.$$
+	
+	(2)由分离变量法知, 方程有特解
+	$$u(x,t) = \mathop{{\sum}}_{k = 0}^{\infty}\left(A_{k}\cos\frac{k\pi a}{l}t + B_{k}\sin\frac{k\pi a}{l}t \right)\cos\frac{k\pi}{l}x,$$
+	其中
+	$$\begin{aligned}
+		&A_{0} = \frac{1}{l}{{\int}}_{0}^{l}\varphi(\xi)d\xi = \frac{l}{2},\\
+		&A_{k} = \frac{2}{l}{{\int}}_{0}^{l}x\cos\frac{k\pi}{l}xdx = \frac{2l}{{(k\pi)}^{2}}\left\lbrack {({-}1)}^{k} {-} 1 \right\rbrack,\\
+		&B_{k} = \frac{2}{k\pi a}{{\int}}_{0}^{l}0 {\cdot} \cos\frac{k\pi}{l}xdx = 0.
+	\end{aligned}$$
+	于是
+	\[u(x,t) = \frac{l}{2} + \mathop{{\sum}}\limits_{k = 1}^{{\infty}}\frac{2l}{{(k\pi)}^{2}}\left\lbrack {({-}1)}^{k} {-} 1 \right\rbrack\cos\frac{k\pi a}{l}t\cos\frac{k\pi}{l}x.\qedhere\]
+\end{solve}
+
+
 \begin{exercise}[4]
   用分离变量法求解初边值问题:
   \[\begin{cases}
@@ -479,22 +575,28 @@
 \end{exercise}
 
 \begin{solve}
-  Let $v=u+\frac{g}{2a^2}x(x-2l)$, then it is straightforward to verify that
-  $v$ satisfies the following equation
+	设$u(x,t)=v(x,t)+w(x)$, 其中$w(x)$是常微分方程边值问题
+	\[\begin{cases}
+		-a^2w''(x)=g, \\
+		w(0)=0,\quad w'(l)=0.
+	\end{cases}\]
+	的解.解得
+	$$w(x)=\frac{g}{2a^2}x(2l-x).$$
+  于是 $\displaystyle v(x,t)=u(x,t)+\frac{g}{2a^2}x(x-2l)$, 且满足齐次方程和齐次边界情形
   \[\begin{cases}
     v_{tt}-a^2v_{xx}=0,0<x<l,t>0, \\
     v(0,t)=\frac{\partial v}{\partial x}(l,t)=0, \\
     v(x,0)=\frac{g}{2a^2}x(x-2l),\quad\frac{\partial v}{\partial t}(x,0)=\sin\frac{\pi x}{2l}.
   \end{cases}\]
-  Let
+  令
   \[ v(x,t) = X(x)T(t). \]
-  Then
+  于是
   \[ \frac{X''(x)}{X(x)} = \frac{T''(t)}{T(t)} = -\lambda. \]
   First of all, since $X''(x) + \lambda X(x) = 0$ with $X(0) = X'(l) = 0$, we have
   \begin{itemize}
     \item If $\lambda\leq 0$, there only exists trivial solution $X\equiv 0$;
-    \item If $\lambda>0$, we have $\lambda_k = \bigl(\frac{(2k+1)\pi}{2l}\bigr)^2$
-      and $X_k(x) = C_k \sin\frac{(2k+1)\pi}{2l}x$.
+    \item If $\lambda>0$, we have $\displaystyle \lambda_k = \bigl(\frac{(2k+1)\pi}{2l}\bigr)^2$
+      and $\displaystyle X_k(x) = C_k \sin\frac{(2k+1)\pi}{2l}x$.
   \end{itemize}
   On the other hand, since $T(t)$ satisfies
   \[ T''(t) + \biggl(\frac{(2k+1)\pi a}{2l}\biggr)^2 T = 0. \]
@@ -509,18 +611,17 @@
   Combining with the initial value condition we have
   \begin{equation}\label{eq:a14}
     \begin{aligned}
-      A_k & = \frac{2}{l}\int_0^l\frac{g}{2a^2}x(x-2l)\sin\frac{(2k+1)\pi}{2l}x\diff x
-        = -\frac{16l^2g}{(2k+1)^3a^2\pi^3}, \\
-      B_0 & = \frac{2l}{\pi a},\quad B_k=0\quad (k\geq 1).
+      &A_k=\frac{2}{l}\int_0^l\frac{g}{2a^2}x(x-2l)\sin\frac{(2k+1)\pi}{2l}x\diff x=-\frac{16gl^2}{(2k+1)^3\pi^3a^2}, \\
+      &B_k=\begin{cases}\frac{2l}{\pi a},&k=0,\\0,&k\geq1.\end{cases}
     \end{aligned}
   \end{equation}
   Therefore,
   \begin{align*}
     u(x,t)
-    ={} & \sum_{k=0}^{\infty}\left(A_k\cos\frac{(2k+1)\pi a}{2l}t+B_k\sin\frac{(2k+1)\pi a}{2l}t\right)\sin\frac{(2k+1)\pi}{2l}x \\
-    & - \frac{g}{2a^2}x(x-2l),
+    ={} & \sum_{k=0}^{\infty}\left(A_k\cos\frac{(2k+1)\pi a}{2l}t+B_k\sin\frac{(2k+1)\pi a}{2l}t\right)\sin\frac{(2k+1)\pi}{2l}x - \frac{g}{2a^2}x(x-2l),\\
+    ={} & \frac{2l}{\pi a}\sin\frac{\pi a}{2l}t\sin\frac{\pi}{2l}x-\frac{16gl^2}{\pi^3 a^2}\sum_{k=0}^{\infty}\frac{1}{(2k+1)^3}\cos\frac{(2k+1)\pi a}{2l}t\sin\frac{(2k+1)\pi}{2l}x \\
+    &- \frac{g}{2a^2}x(x-2l).
   \end{align*}
-  where the coefficients $A_k$, $B_k$ are given by \eqref{eq:a14}.
 \end{solve}
 
 
@@ -586,10 +687,10 @@
   $\Delta = 4b^2 - 4\bigl(\frac{k\pi a}{l}\bigr)^2 < 0$ for all $k\geq 1$, then
   \[\lambda = -b \pm \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2}i, \]
   and
-  \[ T_k(t) = e^{-bt} \biggl(A_k \sin \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t
+  \[ T_k(t) = \e^{-bt} \biggl(A_k \sin \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t
     + B_k \cos \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t\biggr). \]
   Therefore,
-  \[ u(x,t) = e^{-bt} \sum_{k=1}^\infty \sin\frac{k\pi x}{l}
+  \[ u(x,t) = \e^{-bt} \sum_{k=1}^\infty \sin\frac{k\pi x}{l}
       \biggl(A_k \sin \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t
       + B_k \cos \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t\biggr). \]
   Combining with the initial value condition we have
@@ -605,7 +706,7 @@
 
 
 \begin{exercise}[7]<补充题目>
-  验证 $u(x,t) = \int_0^t W(x,t;\tau)\diff\tau$ 是初边值问题 (3.23)--(3.25) 的解.
+  验证 $\displaystyle u(x,t) = \int_0^t W(x,t;\tau)\diff\tau$ 是初边值问题 (3.23)--(3.25) 的解.
 \end{exercise}
 
 \begin{proof}
@@ -621,7 +722,7 @@
   当 $x=l$ 时,
   \[u(l, t) = \int_0^t W(l,t;\tau)\diff\tau = 0.\]
   所以 $u(x,t)$ 满足初边值条件 (3.24), (3.25). 下面验证 $u(x,t)$ 满足方程 (3.23).
-  由于 $u(x,t) = \int_0^t W(x,t;\tau)\diff\tau$, 故
+  由于 $\displaystyle u(x,t) = \int_0^t W(x,t;\tau)\diff\tau$, 故
   \[\frac{\partial u}{\partial t} = W(x,t;t) + \int_0^t \frac{\partial W}{\partial t}\diff\tau
     = \int_0^t \frac{\partial W}{\partial t}(x,t;\tau)\diff\tau.\]
   再求导可得
@@ -646,6 +747,19 @@
 
 \section{高维波动方程的柯西问题}
 
+
+\begin{note}[Wallis公式]
+	(1)
+	$$\int_0^{\frac{\pi}{2}}\sin^nx\mathrm dx=\int_0^{\frac{\pi}{2}}\cos^nx\mathrm dx=\begin{cases}\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{2}{3}\cdot1,&n\text{为奇数,}\\\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{1}{2}\cdot\frac{\pi}{2},&n\text{为偶数.}\end{cases}$$
+	
+	(2)
+	$$\int_0^\pi\sin^nx\mathrm{d}x=2\int_0^{\frac{\pi}{2}}\sin^nx\mathrm{d}x,$$
+	$$\int_0^\pi\cos^nx\mathrm{d}x=\begin{cases}0,&n\text{为奇数,}\\2\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdot\cdots\frac{1}{2}\cdot\frac{\pi}{2},&n\text{为偶数.}\end{cases}$$
+	
+	(3)
+	$$\int_0^{2\pi}\sin^nx\mathrm{d}x=\int_0^{2\pi}\cos^nx\mathrm{d}x=\begin{cases}0,&n\text{为奇数,}\\4\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{1}{2}\cdot\frac{\pi}{2},&n\text{为偶数.}\end{cases} $$
+\end{note}
+
 \begin{exercise}
   利用泊松公式求解波动方程的柯西问题:
   \begin{enumerate}[(1)]
@@ -661,26 +775,25 @@
 \end{exercise}
 
 \begin{solve}
-  (1) By Poisson's formula the solution is
+  (1) 由 Poisson 公式得
   \begin{align*}
     u(x,y,x,t)
-    ={} & \frac{\partial}{\partial t}\left(\frac{1}{4\pi a^2t}\iint_{S_{at}^M}0\diff S\right)
-          + \frac{1}{4\pi a^2t}\iint_{S_{at}^M}(\xi^2+\eta\zeta)\diff S \\
+    ={} & \frac{\partial}{\partial t}\left(\frac{1}{4\pi a^2t}\iint_{S_{at}(M)}0\diff S\right) + \frac{1}{4\pi a^2t}\iint_{S_{at}(M)}(\xi^2+\eta\zeta)\diff S \\
     ={} & \frac{1}{4\pi a^2t}\int_0^{\pi}\int_0^{2\pi} \bigl[(x+at\sin\theta\cos\varphi)^2 \\
         & + (y+at\sin\theta\sin\varphi)(z+at\cos\theta) \bigr]
           a^2t^2\sin\theta\diff\varphi\diff\theta \\
-    ={} & (x^2+	yz)t + a^2t^3/3.
+    ={} & (x^2+	yz)t + \frac13a^2t^3.
   \end{align*}
 
-  (2) By Poisson's formula the solution is
+  (2) 由 Poisson 公式得
   \begin{align*}
     u(x,y,z,t)
-    & = \frac{\partial}{\partial t} \biggl(\frac{1}{4\pi a^2 t}\iint_{S_{at}^M} \xi^3
+    & = \frac{\partial}{\partial t} \biggl(\frac{1}{4\pi a^2 t}\iint_{S_{at}(M)} \xi^3
         + \zeta^2\eta \d S\biggr) \\
     & = \frac{\partial}{\partial t} \biggl(\frac{1}{4\pi a^2 t} \int_0^\pi \int_0^{2\pi}
-        \bigl[ (x+at\sin\theta\cos\phi)^3 \\
-    & \qquad + (y+at\sin\theta\phi)^2(z+at\cos\theta) \bigr] 
-        a^2t^2\sin\theta \d \phi \d \theta\biggr) \\
+        \bigl[ (x+at\sin\theta\cos\varphi)^3 \\
+    & \qquad + (y+at\sin\theta\varphi)^2(z+at\cos\theta) \bigr] 
+        a^2t^2\sin\theta \d \varphi \d \theta\biggr) \\
     & = x^3 + y^2z + 3a^2t^2x + a^2t^2z. \qedhere
   \end{align*}
 \end{solve}
@@ -707,19 +820,17 @@
   由 Poisson 公式得
   \[
     \tilde{u}(x, y, z, t) = \frac{\partial}{\partial t}
-      \biggl(\frac{1}{4\pi a^2t} \iint_{S_{at}^M} \tilde{\varphi}(\xi,\eta,\zeta)\diff S\biggr)
-      + \frac{1}{4\pi a^2t} \iint_{S_{at}^M} \tilde{\psi}(\xi,\eta,\zeta)\diff S.
+      \biggl(\frac{1}{4\pi a^2t} \iint_{S_{at}(M)} \tilde{\varphi}(\xi,\eta,\zeta)\diff S\biggr)
+      + \frac{1}{4\pi a^2t} \iint_{S_{at}(M)} \tilde{\psi}(\xi,\eta,\zeta)\diff S.
   \]
   于是
   \[
     u(x,t)
     = \frac{\partial}{\partial t}
-      \biggl(\frac{1}{4\pi a^2t} \iint_{S_{at}^M} \varphi(\xi)\diff S\biggr)
-      + \frac{1}{4\pi a^2t} \iint_{S_{at}^M} \psi(\xi)\diff S.
+      \biggl(\frac{1}{4\pi a^2t} \iint_{S_{at}(M)} \varphi(\xi)\diff S\biggr)
+      + \frac{1}{4\pi a^2t} \iint_{S_{at}(M)} \psi(\xi)\diff S.
   \]
-  采用球坐标 $\xi = x + r\cos\theta$, $\eta = y + r\sin\theta\cos\psi$,
-  $\zeta = z + r\sin\theta\sin\phi$, 其中 $r=at$, $0\leq\theta\leq\pi$,
-  $0\leq\phi < 2\pi$. 则
+  采用球坐标 $\xi = x + r\cos\theta$, $\eta = y + r\sin\theta\cos\psi$, $\zeta = z + r\sin\theta\sin\phi$, 其中 $r=at$, $0\leq\theta\leq\pi$, $0\leq\phi < 2\pi$. 则
   \begin{align*}
     u(x,t)
     ={} & \frac{\partial}{\partial t}
@@ -746,7 +857,7 @@
     \item $\begin{cases}
             u_{tt} = a^2(u_{xx}+u_{yy}), \\
             u|_{t=0}=x^2(x+y), \\
-            u_t|_{t=0}=0.
+            u_t|_{t=0}=0;
           \end{cases}$
     \item $\begin{cases}
             u_{tt} - 3(u_{xx}+u_{yy}) = x^3+y^3, \\
@@ -757,7 +868,7 @@
 \end{exercise}
 
 \begin{solve}
-  (1) By Poisson's formula we have
+  (1) 由 Poisson 公式得
   \begin{align*}
     u(x,y,t)
     & = \frac{1}{2\pi a}\frac{\partial}{\partial t}\int_0^{at}\int_0^{2\pi}\frac{\varphi(x         
@@ -767,11 +878,11 @@
       (x+y+r\cos\theta+r\sin\theta)}{\sqrt{a^2t^2-r^2}}r\diff\theta\diff r \\
     & = \frac{1}{2\pi a}\frac{\partial}{\partial t}
       \int_0^{at}\frac{\pi\left[2x^2(x+y)+r^2(3x+y)\right]}{\sqrt{a^2t^2-r^2}}r\diff r \\
-    & = \frac{1}{2\pi}\frac{\partial}{\partial t}\int_0^{\pi/2}
+    & = \frac{1}{2\pi}\frac{\partial}{\partial t}\int_0^{\frac{\pi}{2}}
       \frac{2x^2(x+y)+a^2t^2\sin^2\beta(3x+y)}{at\cos\beta}
       at\sin\beta\cdot at\cos\beta \diff\beta \\
-    & = \frac{1}{2a}\frac{\partial}{\partial t}\left(2x^2(x+y)at+\frac{2}{3}a^2t^2(3x+y)\right)\\
-    & = x^2(x+y)+at^2(3x+y).
+    & = \frac{1}{2a}\frac{\partial}{\partial t}\left(2x^2(x+y)at+\frac{2}{3}a^3t^2(3x+y)\right)\\
+    & = x^2(x+y)+a^2t^2(3x+y).
   \end{align*}
 
   (2) First of all, we consider the homogeneous equation
@@ -785,10 +896,7 @@
   By Poisson's formula, the solution to~\eqref{eq:a15} is
   \begin{equation}\label{eq:a16}
     \begin{aligned}
-      u_1(x,y,t)
-      & = \frac{1}{2\sqrt{3}\pi} \int_0^{\sqrt3 t}\int_0^{2\pi} 
-          \frac{(x+r\cos\theta)^2}{\sqrt{3t^2 - r^2}} r \d\theta\d r \\
-      & = x^2 t + t^3.
+      u_1(x,y,t) = \frac{1}{2\sqrt{3}\pi} \int_0^{\sqrt3 t}\int_0^{2\pi} \frac{(x+r\cos\theta)^2}{\sqrt{3t^2 - r^2}} r \d\theta\d r = x^2 t + t^3.
     \end{aligned}
   \end{equation}
   Then we consider the nonhomogeneous equation with homogeneous initial condition
@@ -828,7 +936,7 @@
 
 
 \begin{exercise}
-  求二维波动方程的轴对称解 (即形如 $u=u(r,t)$ 的解, 其中 $r=\sqrt{x^2+y^2}$).
+  求二维波动方程的轴对称解 (即二维波动方程形如 $u=u(r,t)$ 的解, 其中 $r=\sqrt{x^2+y^2}$).
 \end{exercise}
 
 \begin{solve}
@@ -862,8 +970,8 @@
   \end{cases}\]
   由三维波动方程柯西问题解的 Poisson 公式得
   \[ v(x,y,z,t) = \frac{\partial}{\partial t}
-    \biggl(\frac{1}{4\pi a^2t}\iint_{S_{at}^M} \e^{\frac{c\zeta}{a}}\varphi(\xi,\eta)\d S\biggr)
-    + \frac{1}{4\pi a^2t}\iint_{S_{at}^M} \e^{\frac{c\zeta}{a}}\psi(\xi,\eta)\d S. \qedhere \]
+    \biggl(\frac{1}{4\pi a^2t}\iint_{S_{at}(M)} \e^{\frac{c\zeta}{a}}\varphi(\xi,\eta)\d S\biggr)
+    + \frac{1}{4\pi a^2t}\iint_{S_{at}(M)} \e^{\frac{c\zeta}{a}}\psi(\xi,\eta)\d S. \qedhere \]
 \end{solve}
 
 
@@ -957,13 +1065,13 @@
     u_t|_{t=0}=0.
   \end{cases}\]
   首先 $(\star)$ 的解为
-  \[u_1(x,y,z,t) = \frac{1}{4\pi t}\iint_{S_t^M}(\xi^2+\eta\zeta)\diff S
+  \[u_1(x,y,z,t) = \frac{1}{4\pi t}\iint_{S_t(M)}(\xi^2+\eta\zeta)\diff S
     = (x^2+yz)t+\frac{1}{3}t^3.\]
   然后 $(\star\star)$ 的解为
   \[\begin{split}
     u_2(x,y,z,t)
     & = \frac{1}{4\pi}\iiint_{r\leq t}\frac{2(\eta-t+r)}{r}\diff V \\
-    & = \frac{1}{4\pi}\int_0^t\iint_{S_r^M}\frac{2(\eta-t+r)}{r}\diff S\diff r \\
+    & = \frac{1}{4\pi}\int_0^t\iint_{S_t(M)}\frac{2(\eta-t+r)}{r}\diff S\diff r \\
     & = \frac{1}{4\pi}\int_0^t\int_0^{\pi}\int_0^{2\pi}
       \frac{2(y+r\sin\theta\sin\varphi-t+r)}{r}r^2\sin\theta\diff\varphi\diff\theta\diff r \\
     & = -\frac{1}{3}t^3+yt^2.
@@ -973,6 +1081,60 @@
 \end{solve}
 
 
+\begin{exercise}
+	求解以下 Cauchy 问题:
+	$$(1)\begin{cases}u_{tt}=4(u_{xx}+u_{yy}+u_{zz}),\\u|_{t=0}=0,\quad u_{t}|_{t=0}=\dfrac{1}{1+(x+y+z)^2};\end{cases}\quad(2)\begin{cases}u_{tt}=4(u_{xx}+u_{yy}+u_{zz}),\\u|_{t=0}=\sin x+\e^{2z},\quad u_{t}|_{t=0}=0;\end{cases}$$
+\end{exercise}
+
+\begin{solve}
+	(1)作代换$r=x+y+z$, 则原问题变为
+	\[\begin{cases}
+		u_{tt}=12u_{rr}\\
+		u|_{t=0}=0,\quad u_t|_{t=0}=\dfrac{1}{1+r^2}
+	\end{cases}\]
+	故可设齐次方程的解$u(r,t)=F(r-2\sqrt{3}t)+G(r+2\sqrt{3}t)$,其中 $F$, $G$ 均为单变量函数.
+	
+	代入初值条件,得
+	\[\begin{cases}
+		F(r)+G(r)=0\\
+		-2\sqrt{3}F'(r)+2\sqrt{3}G'(r)=\frac{1}{1+r^2}
+	\end{cases}\]
+	解得
+	\[\begin{cases}
+		F(r)=-\frac{1}{4\sqrt{3}}\arctan r+C\\
+		G(r)=\frac{1}{4\sqrt{3}}\arctan r-C
+	\end{cases},\]
+	其中 $C$ 为常数. 故
+	$$u=\frac1{4\sqrt{3}}\left(\arctan{(x+y+z+2\sqrt{3}t)}-\arctan{(x+y+z-2\sqrt{3}t)}\right).$$
+	
+	(2)设$u_1,u_2$分别是如下两个问题的解
+		\[\begin{cases}
+			u_{tt}=4(u_{xx}+u_{yy}+u_{zz}),\\
+			u|_{t=0}=\sin x,\quad u_{t}|_{t=0}=0;\end{cases}
+		\quad
+		\begin{cases}
+			u_{tt}=4(u_{xx}+u_{yy}+u_{zz}),\\
+			u|_{t=0}=\e^{2z},\quad u_{t}|_{t=0}=0.
+		\end{cases}\]
+	由三维泊松公式,
+	\[u_1(x,t)=\frac{\partial}{\partial t}\left(\frac{1}{4\pi a^2t}\iint_{\partial B(M,at)}\sin\xi\d S\right)\]
+	若作球面坐标代换,不妨令 $\xi=x+at\cos\theta$, 则
+	\[\begin{aligned}
+		u_1&={\frac{\partial}{\partial t}}\left({\frac{1}{4\pi a^{2}t}}\int_{0}^{2\pi}\int_{0}^{\pi}\sin(x+at\cos{\theta})a^2t^2\sin\theta\d\theta\d\varphi\right)\\
+		&=\frac{\partial}{\partial t}\left(\frac{1}{2 a^{2}t}\int_{0}^{\pi}\sin(x+at\cos\theta)a^2t^2\sin\theta\d\theta\right).
+	\end{aligned}\]
+	作代换$\alpha=x+r\cos\theta$,则
+	\[\begin{aligned}
+		u_{1}& =\frac{\partial}{\partial t}\left(\frac{1}{4\pi a^{2}t}2\pi at\int_{x-at}^{x+at}\sin\alpha\mathrm{d}\alpha\right)=\frac{1}{2}\left(\sin\left(x+at\right)+\sin\left(x-at\right)\right),
+		\end{aligned}\]
+	类似地
+	\[u_2(x,t)=\frac12\left(\e^{(z+at)}+\e^{(z-at)}\right).\]
+	则解为
+	\[\begin{aligned}
+		u(x,y,z,t)&=u_{1}(x,y,z,t)+u_{2}(x,y,z,t) \\
+		&=\frac12\left(\sin\left(x+at\right)+\sin\left(x-at\right)+\e^{\left(z+at\right)}+\e^{\left(z-at\right)}\right).
+	\end{aligned}\]
+\end{solve}
 \section{波的传播与衰减}
 
 \begin{exercise}
@@ -1045,21 +1207,21 @@
 \end{proof}
 
 
-\section{能量不等式，波动方程解的唯一性和稳定性}
+\section{能量不等式, 波动方程解的唯一性和稳定性}
 
 \begin{note}[教材(6.15)式解释]
   第二个等式等价于
   \begin{align*}
-        & \iint_{\Omega}(u_xu_{xt}+u_yu_{yt})\diff x\diff y
-          +\iint_{\Omega}(u_{xx}u_t+u_{yy}u_t)\diff x\diff y \\
-    ={} & \iint_{\Omega}\left[\frac{\partial}{\partial x}(u_xu_t)
+        & \iint_{\varOmega}(u_xu_{xt}+u_yu_{yt})\diff x\diff y
+          +\iint_{\varOmega}(u_{xx}u_t+u_{yy}u_t)\diff x\diff y \\
+    ={} & \iint_{\varOmega}\left[\frac{\partial}{\partial x}(u_xu_t)
           +\frac{\partial}{\partial y}(u_yu_t)\right]\diff x\diff y
-          =\int_{\Gamma}u_t(\nabla u\cdot\vec{n})\diff s.
+          =\int_{\varGamma}u_t(\nabla u\cdot\bm{n})\diff s.
   \end{align*}
   而由格林公式得
-  \[\begin{split}\int_{\Gamma}u_t(\nabla u)\cdot\vec{n}\diff s&=\iint_{\Omega}\nabla\cdot(u_t\nabla u)\diff x\diff y\\
-  &=\iint_{\Omega}\left(\frac{\partial}{\partial x}\vec{i}+\frac{\partial}{\partial y}\vec{j}\right)\left(u_tu_x\vec{i}+u_tu_y\vec{j}\right)\diff x\diff y\\
-  &=\iint_{\Omega}\left[\frac{\partial}{\partial x}(u_xu_t)+\frac{\partial}{\partial y}(u_yu_t)\right]\diff x\diff y\end{split}\]
+  \[\begin{split}\int_{\varGamma}u_t(\nabla u)\cdot\vec{n}\diff s&=\iint_{\varOmega}\nabla\cdot(u_t\nabla u)\diff x\diff y\\
+  &=\iint_{\varOmega}\left(\frac{\partial}{\partial x}\bm{i}+\frac{\partial}{\partial y}\bm{j}\right)\left(u_tu_x\bm{i}+u_tu_y\bm{j}\right)\diff x\diff y\\
+  &=\iint_{\varOmega}\left[\frac{\partial}{\partial x}(u_xu_t)+\frac{\partial}{\partial y}(u_yu_t)\right]\diff x\diff y.\end{split}\]
 \end{note}
 
 \begin{note}[定理6.2]
@@ -1067,10 +1229,10 @@
   \begin{align*}
     E(t)+E_0(t)
     \leq{} & C\left(E(0)+E_0(0)+\int_0^T
-      \iint_{\Omega}(f_1-f_2)^2\diff x\diff y\diff t\right) \\
-    ={} & C\biggl(\iint_{\Omega}\left[v_t^2+a^2\left(v_x^2+v_y^2\right)\right]\bigm|_{t=0}
-          \diff x\diff y + \iint_{\Omega}v^2(x,y,0)\diff x\diff y \\
-        & \quad + \int_0^T \iint_{\Omega}( f_1-f_2)^2\diff x\diff y\diff t\biggr) \\
+      \iint_{\varOmega}(f_1-f_2)^2\diff x\diff y\diff t\right) \\
+    ={} & C\biggl(\iint_{\varOmega}\left[v_t^2+a^2\left(v_x^2+v_y^2\right)\right]\bigm|_{t=0}
+          \diff x\diff y + \iint_{\varOmega}v^2(x,y,0)\diff x\diff y \\
+        & \quad + \int_0^T \iint_{\varOmega}( f_1-f_2)^2\diff x\diff y\diff t\biggr) \\
     ={} & C\bigl(\|\psi_1-\psi_2\|^2+a^2\|\varphi_{1x}-\varphi_{2x}\|^2
           + a^2\|\varphi_{1y}-\varphi_{2y}\|^2 \\
         & + \|\varphi_1-\varphi_2\|^2+\|f_1-f_2\|^2\bigr).
@@ -1088,7 +1250,7 @@
 \end{exercise}
 
 \begin{proof}
-  能量 $E(t)=\int_0^l\left(u_t^2+a^2u_x^2\right)\diff x$, 关于 $t$ 求导得
+  能量 $\displaystyle E(t)=\int_0^l\left(u_t^2+a^2u_x^2\right)\diff x$, 关于 $t$ 求导得
   \begin{align*}
     \frac{\diff E(t)}{\diff t}
     & = 2\int_0^l\left(u_tu_{tt}+a^2u_xu_{xt}\right)\diff x \\
@@ -1098,24 +1260,28 @@
   \end{align*}
   因此其能量是减少的.
   
-  为了证明方程 $u_{tt}=a^2u_{xx}-cu_t+f$ 的初边值问题的解的唯一性,
-  只需要证明下面的齐次定解问题只有零解
+  为了证明方程 $u_{tt}=a^2u_{xx}-cu_t+f$ 的初边值问题的解的唯一性, 设$u_1$,$u_2$为该方程的解,则$u=u_1-u_2$满足齐次定解问题
   \[\begin{cases}
     u_{tt}=a^2u_{xx}-cu_t, \\
     u(0,t)=u(l,t)=0, \\
     u(x,0)=u_t(x,0)=0.
   \end{cases}\]
   由能量不等式得
-  \[E(t)\leq E(0)=\int_0^l\left[u_t^2(x,0)+a^2u_x^2(x,0)\right]\diff x = 0.\]
-  故$u_t=u_x=0\Rightarrow u(x,t)\equiv 0$.
+  \[0\leq E(t)\leq E(0)=\int_0^l\left[u_t^2(x,0)+a^2u_x^2(x,0)\right]\diff x = 0.\]
+  故$E(t)=0\Rightarrow u_t=u_x=0\Rightarrow u(x,t)\equiv 0$.
   
   下面证明解对初始条件及自由项的稳定性:
 
-  \textbullet 关于初始条件的稳定性. 记$E_0(t)=\int_0^lu^2\diff x$,则
+  \textbullet 关于初始条件的稳定性. 记$\displaystyle E_0(t)=\int_0^lu^2(x,t)\diff x$,则
   \[\frac{\diff E_0(t)}{\diff t}
     = 2\int_0^luu_t\diff x\leq\int_0^lu^2\diff x+\int_0^lu_t^2\diff x\leq E_0(t)+E(t),\]
-  故
-  \[E_0(t) \leq e^tE_0(0)+e^t\int_0^te^{-\tau}E(\tau)\diff\tau\leq e^tE_0(0)+E(0)(e^t-1).\]
+  然后用$\e^{-t}$乘上式两端得
+  \[\frac{\d}{\d t}[\e^{-t}E_0(t)]\leq \e^{-t}E(t),\]
+  再从$0$到$t$积分上式,得到
+  \[E_0(t) \leq \e^tE_0(0)+\e^t\int_0^t\e^{-\tau}E(\tau)\diff\tau,\]
+  又$E(\tau)\leq E(0)$,故
+  \[E_0(t)\leq \e^tE_0(0)+\e^tE(0)\int_0^t\e^{-\tau}\diff\tau = \e^tE_0(0)+E(0)(\e^t-1).\]
+  
   根据上式,当初值的均方模很小时,对固定的$T$, $0\leq t\leq T$时解的均方模也很小, 因此关于初始条件是稳定的.
 
   \textbullet 如有外力的作用, 此时定解问题为:
@@ -1127,10 +1293,12 @@
   此时 $E(0)=E_0(0)=0$,且
   \[\begin{split}
     \frac{\diff E(t)}{\diff t}&=2\int_0^lu_t(-cu_t+f)\diff x=-2c\int_0^lu_t^2\diff x+2\int_0^lu_tf\diff x\\
-    &\leq E(t)+\int_0^lf^2\diff x\\
-    &\Rightarrow E(t)\leq C_0\left(E(0)+\int_0^T\int_0^lf^2\diff x\diff t\right)=C_0\int_0^T\int_0^lf^2\diff x\diff t\\
-    &\Rightarrow E_0(t)\leq e^tE_0(0)+e^t\int_0^te^{-\tau}E(\tau)\diff\tau\leq A\int_0^T\int_0^lf^2\diff x\diff t
+    &\leq E(t)+\int_0^lf^2\diff x
   \end{split}\]
+  \[\begin{split}
+    &\Rightarrow E(t)\leq C_0\left(E(0)+\int_0^T\int_0^lf^2\diff x\diff t\right)=C_0\int_0^T\int_0^lf^2\diff x\diff t\\
+    &\Rightarrow E_0(t)\leq \e^tE_0(0)+\e^t\int_0^t\e^{-\tau}E(\tau)\diff\tau\leq A\int_0^T\int_0^lf^2\diff x\diff t
+    \end{split}\]
   故关于自由项是稳定的.
 \end{proof}
 
@@ -1156,11 +1324,11 @@
     & = 2\int_0^lu_tf\diff x\leq E(t)+\int_0^lf^2\diff x.
   \end{split}\]
   从 $0$ 到 $t$ 积分得
-  \[E(t)\leq e^tE(0)+e^t\int_0^te^{-\tau}\int_0^lf^2(x,\tau)\diff x\diff\tau.\]
+  \[E(t)\leq \e^tE(0)+\e^t\int_0^t\e^{-\tau}\int_0^lf^2(x,\tau)\diff x\diff\tau.\]
   又
   \[E'_0(t) = 2\int_0^l uu_t \diff x\leq E_0(t) + E(t).\]
   故
-  \[E_0(t)\leq e^t E_0(0) + e^t\int_0^t e^{-\tau} E(\tau) \diff\tau.\]
+  \[E_0(t)\leq \e^t E_0(0) + \e^t\int_0^t \e^{-\tau} E(\tau) \diff\tau.\]
   设 $u(x,t)$ 为满足齐次初边值条件的解, 显然有 $E(0)=E_0(0)=0$.
   \[E_0(0) \leq C\int_0^T \int_0^l f^2 \diff x\diff t.\qedhere\]
 \end{proof}
@@ -1185,26 +1353,28 @@
           \diff s\diff r \\
         & + 2\int_{\Gamma_t} \left(a^2[u_xu_t\cos(n,x)+u_yu_t\cos(n,y)]
           - \frac{a}{2}[u_t^2+a^2(u_x^2+u_y^2)]\right)\diff s \\
-    \leq{} & 2\iint_{\Omega_t} u_t f(x,y,t)\diff x\diff y
-          \leq E_1(\Omega_t) + \iint_{\Omega_t} f^2 \diff x\diff y.
+    \leq{} & 2\iint_{\Omega_t} u_t f(x,y,t)\diff x\diff y \\
+    \leq{} & \iint_{\Omega_t}u_t^2\diff x\diff y + \iint_{\Omega_t}f^2(x,y,t)\diff x\diff y 
+          \leq E_1(\Omega_t) + \iint_{\Omega_t} f^2(x,y,t) \diff x\diff y.
   \end{align*}
-  记 $F(t)=\iint_{\Omega_t} f^2(x,y,t) \diff x\diff y$, 则
-  \[E_1(\Omega_t) \leq e^t E_1(\Omega_0) + e^t \int_0^te^{-\tau}F(\tau)\diff\tau.\]
+  记 $\displaystyle F(t)=\iint_{\Omega_t} f^2(x,y,t) \diff x\diff y$, 则
+  \[E_1(\Omega_t) \leq \e^t E_1(\Omega_0) + \e^t \int_0^t\e^{-\tau}F(\tau)\diff\tau.\]
+  引进积分$\displaystyle E_0(\Omega_t)=\iint_{\Omega_t} u^2(x,y,t) \diff x\diff y$,则
   \[\begin{split}
     \frac{\diff E_0(\Omega_t)}{\diff t}
     & = -a\int_{\Gamma_t}u^2\diff s+2\iint_{\Omega}uu_t\diff x\diff y\leq E_0(\Omega_t)
       + E_1(\Omega_t) \\
-    & \Rightarrow E_0(\Omega_t)\leq e^tE_0(\Omega_0)
-      + e^t\int_0^te^{-\tau}E_1(\Omega_{\tau})\diff\tau.
+    & \Rightarrow E_0(\Omega_t)\leq \e^tE_0(\Omega_0)
+      + \e^t\int_0^t\e^{-\tau}E_1(\Omega_{\tau})\diff\tau.
   \end{split}\]
-  考虑柯西问题
+  为证明自由项的稳定性,考虑柯西问题
   \[\begin{cases}
     u_{tt} = a^2(u_{xx}+u_{yy})+f(x,y,t) \\
     u|_{t=0} = u_t|_{t=0} = 0.
   \end{cases}\]
   此时 $E_0(\Omega_0) = E_1(\Omega_0) = 0$, 故
-  \[E_0(\Omega_t)\leq e^t\int_0^t \int_0^{\tau} e^{-\xi}F(\xi) \diff\xi\diff\tau.\]
-  对上式从 $0$ 到 $T=R/a$ 积分得
+  \[E_0(\Omega_t)\leq \e^t\int_0^t \int_0^{\tau} \e^{-\xi}F(\xi) \diff\xi\diff\tau.\]
+  对上式从 $0$ 到 $\displaystyle T=\frac Ra$ 积分得
   \[\|u\|_{L^2(K)}^2\leq C\|f\|_{L^2(K)}^2.\qedhere\]
 \end{proof}
 
